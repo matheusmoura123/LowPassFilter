@@ -1,0 +1,77 @@
+# Ignore Windows system files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Ignore VS Code settings (except workspace-specific settings if needed)
+.vscode/
+!.vscode/settings.json
+
+# Ignore build outputs and temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*.swn
+
+# Ignore executables and compiled binaries
+*.exe
+*.dll
+*.obj
+*.o
+*.so
+*.out
+*.a
+*.lib
+*.pyc
+*.class
+
+# Ignore node modules (if using Node.js)
+node_modules/
+
+# Ignore Python environment folders
+.env/
+venv/
+__pycache__/
+
+# Ignore DotNet build folders
+bin/
+obj/
+
+# Ignore Rust target folder
+target/
+
+# Ignore JetBrains IDE files (if using Rider, IntelliJ, etc.)
+.idea/
+
+# Ignore other editors/IDEs
+*.sublime-workspace
+*.sublime-project
+
+# Ignore package managers
+package-lock.json
+yarn.lock
+
+# Ignore archives
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Ignore Mac system files (in case you dual-develop)
+.DS_Store
+
+# Ignore logs and environment
+.env
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore test coverage reports
+coverage/
+*.lcov
+
+*.csv
