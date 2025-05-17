@@ -5,7 +5,6 @@
 
 namespace Moura {
 
-
 LowPassFilter::LowPassFilter()
 	: m_filterType(FIR) 
 	, m_kernelSize(51)
