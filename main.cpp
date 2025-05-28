@@ -4,15 +4,19 @@
 #include <cstdlib>
 #include <ctime>
 
+using namespace Moura;
+
 int main() {
 
-    using namespace Moura;
 
     LowPassFilter lpf_fir(LowPassFilter::FilterType::FIR);
-    lpf_fir.SetKernel(21);
+    lpf_fir.SetKernel(41);
 
     LowPassFilter lpf_bw(LowPassFilter::FilterType::IIR);
-    lpf_bw.SetBWFreq(0.01);
+    lpf_bw.SetBWFreq(0.02);
+
+    LowPassFilter lpf_bw_2(LowPassFilter::FilterType::IIR);
+    lpf_bw_2.SetBWFreq(0.02);
 
     std::vector<double> filteredSignal_fir;
     std::vector<double> filteredSignal_bw;
@@ -25,7 +29,7 @@ int main() {
     double signalFreq = 10;
     double signalAmplitude = 1.0;
     double noiseFreq = 200;
-    double noiseAmplitude = 0.8; 
+    double noiseAmplitude = 0.4; 
     double duration = 1.0;
     double samplingRate = 1000;
 
@@ -45,7 +49,7 @@ int main() {
         signal.push_back(sig + r*noiseAmplitude*std::sin(noiseFreq * 2 * g_pi * time[i]));
 
         filteredSignal_fir.push_back(lpf_fir.FilterSignal(signal[i]));
-        filteredSignal_bw.push_back(lpf_bw.FilterSignal(signal[i]));
+        filteredSignal_bw.push_back(lpf_bw_2.FilterSignal(lpf_bw.FilterSignal(signal[i])));
         // std::cout << time[i] << " " << signal[i] << " " << filteredSignal_fir[i] << " " << filteredSignal_bw[i] << std::endl;
     }
 

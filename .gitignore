@@ -8,6 +8,9 @@ $RECYCLE.BIN/
 .vscode/
 !.vscode/settings.json
 
+# Ignore build folder
+/build/
+
 # Ignore build outputs and temporary files
 *.log
 *.tmp
