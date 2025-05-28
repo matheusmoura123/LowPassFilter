@@ -55,7 +55,11 @@ LowPassFilter& LowPassFilter::operator=(LowPassFilter&& other)
 }
 
 void LowPassFilter::SetKernel(int m)
-{ 
+{	
+	if (m <= 0.0) {
+		std::cerr << "Error: Kernel size should be bigger than 0\n";
+		return;
+	}
 	m_kernelSize = (m % 2) ? m : m+1;
 }
 
