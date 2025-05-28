@@ -23,7 +23,7 @@ int main() {
     std::vector<double> signal;
     std::vector<double> time;
 
-    std::srand(std::time(0));
+    std::srand(static_cast<unsigned int>(std::time(0)));
 
     // INPUT SIGNAL + NOISE
     double signalFreq = 10;
