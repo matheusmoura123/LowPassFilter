@@ -21,6 +21,7 @@ int main() {
 
     std::vector<double> filteredSignal_mv;
     std::vector<double> filteredSignal_bw;
+    std::vector<double> filteredSignal_bw_2;
     std::vector<double> signal;
     std::vector<double> time;
 
@@ -50,8 +51,9 @@ int main() {
         signal.push_back(sig + r*noiseAmplitude*std::sin(noiseFreq * 2 * g_pi * time[i]));
 
         filteredSignal_mv.push_back(lpf_mv.FilterSignal(signal[i]));
-        filteredSignal_bw.push_back(lpf_bw_2.FilterSignal(lpf_bw.FilterSignal(signal[i])));
-        // std::cout << time[i] << " " << signal[i] << " " << filteredSignal_mv[i] << " " << filteredSignal_bw[i] << std::endl;
+        filteredSignal_bw.push_back(lpf_bw.FilterSignal(signal[i]));
+        filteredSignal_bw_2.push_back(lpf_bw_2.FilterSignal(lpf_bw.FilterSignal(signal[i])));
+        // std::cout << time[i] << " " << signal[i] << " " << filteredSignal_mv[i] << " " << filteredSignal_bw[i] << " " << filteredSignal_bw_2[i] << std::endl;
     }
 
     std::ofstream file("signals.csv");
@@ -60,7 +62,7 @@ int main() {
         return 0;
     }
     for (size_t i = 0; i < totalSamples; ++i) {
-        file << time[i] << "," << signal[i] << "," << filteredSignal_mv[i] << "," << filteredSignal_bw[i] << "\n";
+        file << time[i] << "," << signal[i] << "," << filteredSignal_mv[i]  << "," << filteredSignal_bw[i] << "," << filteredSignal_bw_2[i] << "\n";
     }
     file.close();
 
