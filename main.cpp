@@ -1,4 +1,5 @@
-#include "LowPassFilter.h"
+#include "MovingAverage.h"
+#include "Butterworth.h"
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
@@ -9,16 +10,16 @@ using namespace Moura;
 int main() {
 
 
-    LowPassFilter lpf_fir(LowPassFilter::FIR);
-    lpf_fir.SetKernel(41);
+    MovingAverage lpf_mv;
+    lpf_mv.SetParameter(41);
 
-    LowPassFilter lpf_bw(LowPassFilter::IIR);
-    lpf_bw.SetBWFreq(0.02);
+    Butterworth lpf_bw;
+    lpf_bw.SetParameter(0.02);
 
-    LowPassFilter lpf_bw_2(LowPassFilter::IIR);
-    lpf_bw_2.SetBWFreq(0.02);
+    Butterworth lpf_bw_2;
+    lpf_bw_2.SetParameter(0.02);
 
-    std::vector<double> filteredSignal_fir;
+    std::vector<double> filteredSignal_mv;
     std::vector<double> filteredSignal_bw;
     std::vector<double> signal;
     std::vector<double> time;
@@ -48,9 +49,9 @@ int main() {
 
         signal.push_back(sig + r*noiseAmplitude*std::sin(noiseFreq * 2 * g_pi * time[i]));
 
-        filteredSignal_fir.push_back(lpf_fir.FilterSignal(signal[i]));
+        filteredSignal_mv.push_back(lpf_mv.FilterSignal(signal[i]));
         filteredSignal_bw.push_back(lpf_bw_2.FilterSignal(lpf_bw.FilterSignal(signal[i])));
-        // std::cout << time[i] << " " << signal[i] << " " << filteredSignal_fir[i] << " " << filteredSignal_bw[i] << std::endl;
+        // std::cout << time[i] << " " << signal[i] << " " << filteredSignal_mv[i] << " " << filteredSignal_bw[i] << std::endl;
     }
 
     std::ofstream file("signals.csv");
@@ -59,7 +60,7 @@ int main() {
         return 0;
     }
     for (size_t i = 0; i < totalSamples; ++i) {
-        file << time[i] << "," << signal[i] << "," << filteredSignal_fir[i] << "," << filteredSignal_bw[i] << "\n";
+        file << time[i] << "," << signal[i] << "," << filteredSignal_mv[i] << "," << filteredSignal_bw[i] << "\n";
     }
     file.close();
 

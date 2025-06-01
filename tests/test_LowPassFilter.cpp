@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
-#include "LowPassFilter.h"
+#include "MovingAverage.h"
+#include "Butterworth.h"
 
 using namespace Moura;
 

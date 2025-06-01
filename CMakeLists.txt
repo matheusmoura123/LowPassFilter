@@ -19,7 +19,7 @@ enable_testing()
 
 
 # ---- Add source files ----
-add_library(LowPassFilter src/LowPassFilter.cpp)
+add_library(LowPassFilter src/MovingAverage.cpp src/Butterworth.cpp)
 target_include_directories(LowPassFilter PUBLIC src)
 
 # ---- Build main executable ----
