@@ -9,13 +9,13 @@ using namespace Moura;
 int main() {
 
 
-    LowPassFilter lpf_fir(LowPassFilter::FilterType::FIR);
+    LowPassFilter lpf_fir(LowPassFilter::FIR);
     lpf_fir.SetKernel(41);
 
-    LowPassFilter lpf_bw(LowPassFilter::FilterType::IIR);
+    LowPassFilter lpf_bw(LowPassFilter::IIR);
     lpf_bw.SetBWFreq(0.02);
 
-    LowPassFilter lpf_bw_2(LowPassFilter::FilterType::IIR);
+    LowPassFilter lpf_bw_2(LowPassFilter::IIR);
     lpf_bw_2.SetBWFreq(0.02);
 
     std::vector<double> filteredSignal_fir;

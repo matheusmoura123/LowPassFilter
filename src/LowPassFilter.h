@@ -21,7 +21,7 @@ public:
 	// Enums
 	//
 public:
-	enum FilterType
+	enum Type
 	{
 		FIR,
 		IIR
@@ -43,7 +43,7 @@ public:
 
 
 private:
-	FilterType m_filterType;
+	Type m_filterType;
 	int m_kernelSize;
 	double m_firSum;
 	std::queue<double> m_firBuffer;
@@ -56,7 +56,7 @@ private:
 	//
 public:
 	LowPassFilter();
-	LowPassFilter(FilterType type);
+	LowPassFilter(Type type);
 
 	// ------------------------------------------------------------------------
 	// Destructor

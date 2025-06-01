@@ -15,7 +15,7 @@ LowPassFilter::LowPassFilter()
 	, m_bwMemory(5)
 {}
 
-LowPassFilter::LowPassFilter(FilterType type)
+LowPassFilter::LowPassFilter(Type type)
 	: m_filterType(type)
 	, m_kernelSize(51)
 	, m_firSum(0.0)

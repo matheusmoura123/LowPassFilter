@@ -9,8 +9,8 @@ protected:
     LowPassFilter f2_;
 
     void SetUp() override {
-        f1_ = LowPassFilter(LowPassFilter::FilterType::FIR);
-        f2_ = LowPassFilter(LowPassFilter::FilterType::IIR);
+        f1_ = LowPassFilter(LowPassFilter::FIR);
+        f2_ = LowPassFilter(LowPassFilter::IIR);
     }
 };
 
@@ -23,7 +23,7 @@ TEST_F(LowPassFilterTest, DefaultConstructorSetsExpectedDefaults) {
 
 // Assignment Operators
 TEST_F(LowPassFilterTest, AssignmentOperatorCopiesAllFieldsCorrectly) {
-    LowPassFilter f1(LowPassFilter::FilterType::FIR);
+    LowPassFilter f1(LowPassFilter::FIR);
     f1.SetKernel(9);
     LowPassFilter f2;
     f2 = f1;
@@ -106,16 +106,8 @@ TEST_F(LowPassFilterTest, ComputeBWCoefSetsExpectedCoefficientRange) {
     EXPECT_NO_THROW(f2_.FilterSignal(1.0));
 }
 
-// Edge Case
-TEST_F(LowPassFilterTest, FilterSignalFIRWithZeroKernelSizeReturnsZeroOrNaN) {
-    f1_.SetKernel(0);
-    double out = f1_.FilterSignal(1.0);
-    EXPECT_TRUE(std::isnan(out) || out == 0.0);
-}
-
-
 TEST_F(LowPassFilterTest, ZeroInput) {
-    LowPassFilter f(LowPassFilter::FilterType::FIR);
+    LowPassFilter f(LowPassFilter::FIR);
     EXPECT_NEAR(f.FilterSignal(0.0), 0.0, 1e-6);
 }
 

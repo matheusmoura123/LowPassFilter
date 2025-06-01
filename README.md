@@ -5,10 +5,10 @@ There are two types of low-pass filters implemented in the class:
 - (i) Moving average filter  
 - (ii) 2nd order Butterworth filter
 
-To use (i), initialize the class object with the type `LowPassFilter::FilterType::FIR`,  
+To use (i), initialize the class object with the type `LowPassFilter::FIR`,  
 then call `.SetKernel(int m)` to define the window size.
 
-To use (ii), initialize the class object with the type `LowPassFilter::FilterType::IIR`,  
+To use (ii), initialize the class object with the type `LowPassFilter::IIR`,  
 then call `.SetBWFreq(double fc)` to define the cut-off frequency (0 < fc < 0.5).
 
 Then use `.FilterSignal(double input)` to get the filtered signal.
