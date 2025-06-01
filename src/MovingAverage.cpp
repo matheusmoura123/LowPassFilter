@@ -37,7 +37,7 @@ void MovingAverage::SetParameter(const std::variant<int, double>& param)
 			return;
 		}
 	}
-	std::cerr << "Error: Kernel size should be integer bigger than 0\n";	
+	throw std::invalid_argument("Kernel size should be integer bigger than 0");	
 }
 
 double MovingAverage::FilterSignal(double input)

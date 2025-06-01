@@ -40,7 +40,7 @@ void Butterworth::SetParameter(const std::variant<int, double>& param)
 			return;
 		}
 	}
-	std::cerr << "Error: Cut-off Frequency should be 0 < fc < 0.5\n";
+	throw std::invalid_argument("Cut-off Frequency should be 0 < fc < 0.5");
 }
 
 double Butterworth::FilterSignal(double input)

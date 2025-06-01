@@ -5,6 +5,7 @@
 #include <cmath>
 #include <iostream>
 #include <variant>
+#include <stdexcept>
 
 namespace Moura {
 
