@@ -80,6 +80,10 @@ TEST_F(ButterworthTest, SetBWFreqValidValue) {
     EXPECT_NO_THROW(f_.SetParameter(0.1));
 }
 
+TEST_F(ButterworthTest, BWZeroInput) {
+    EXPECT_NEAR(f_.FilterSignal(0.0), 0.0, 1e-6);
+}
+
 TEST_F(ButterworthTest, StableOutput) {
     for (int i = 0; i < 50; ++i)
         f_.FilterSignal(1.0);
